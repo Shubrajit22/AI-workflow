@@ -1,6 +1,5 @@
 'use client';
 
-// 1. Imports
 import { runGeminiAction } from '@/app/actions/runGemini';
 import { uploadToTransloadit } from '../app/lib/transloadit'; 
 import React, { useCallback, useState, useEffect, useMemo } from 'react';
@@ -247,7 +246,6 @@ const LLMNode = ({ id, data }: { id: string, data: any }) => {
          : "border-purple-500/30 hover:border-purple-500/60 shadow-2xl shadow-purple-900/10"
     }`}>
       
-      {/* HEADER */}
       <div className="bg-[#151515] p-3 rounded-t-xl border-b border-white/5 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="bg-purple-500/20 p-1.5 rounded-lg">
@@ -267,7 +265,7 @@ const LLMNode = ({ id, data }: { id: string, data: any }) => {
         </button>
       </div>
 
-      {/* BODY */}
+
       <div className="p-4 space-y-4">
         <div className="space-y-1">
           <div className="flex items-center justify-between text-[10px] text-gray-500 font-medium px-1">
@@ -278,7 +276,6 @@ const LLMNode = ({ id, data }: { id: string, data: any }) => {
           </select>
         </div>
 
-        {/* Inputs */}
         <div className="space-y-2 pt-2 border-t border-white/5">
            <div className="relative flex items-center justify-between group/handle">
               <Handle type="target" position={Position.Left} id="system" className="w-2.5 h-2.5 bg-blue-500 border-2 border-[#1e1e1e] !left-[-21px]" />
@@ -294,7 +291,7 @@ const LLMNode = ({ id, data }: { id: string, data: any }) => {
            </div>
         </div>
 
-        {/* Result Display */}
+
         {resultText && (
           <div className="mt-2 p-3 bg-black/40 rounded-lg border border-purple-500/20 animate-in fade-in slide-in-from-top-2 duration-300">
              <div className="text-[9px] text-purple-400 font-bold mb-1 tracking-wider">GENERATED OUTPUT:</div>
@@ -592,17 +589,17 @@ const FlowCanvas = () => {
                     zoomOnScroll={true} 
                     proOptions={{ hideAttribution: true }}
                     
-                    // --- FORCE CURSOR STYLE ---
+                    //  FORCE CURSOR STYLE 
                     style={{ cursor: isSelectionMode ? 'default' : 'grab' }}
 
-                    // --- LOGIC FOR SELECTION VS PAN ---
+                    //  LOGIC FOR SELECTION VS PAN 
                     panOnDrag={!isSelectionMode} 
                     selectionOnDrag={isSelectionMode}
                     selectionKeyCode={null} 
                     selectionMode={SelectionMode.Partial}
                     panOnScroll={true}
                     
-                    // --- EXPLICIT DELETE KEYS ---
+                    //  EXPLICIT DELETE KEYS 
                     deleteKeyCode={["Backspace", "Delete"]}
                 >
                     <Background variant={BackgroundVariant.Dots} gap={20} size={1} bgColor="#040405" color="rgba(255, 255, 255, 0.4)" />

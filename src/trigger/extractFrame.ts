@@ -1,4 +1,4 @@
-// src/trigger/extractFrame.ts
+
 import { task } from "@trigger.dev/sdk/v3";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -17,7 +17,6 @@ export const extractFrameTask = task({
       `ffmpeg -ss ${ts} -i "${payload.videoUrl}" -frames:v 1 "${output}"`
     );
 
-    // Upload extracted frame to Transloadit (reuse image template)
-    // return { imageUrl }
+   
   },
 });

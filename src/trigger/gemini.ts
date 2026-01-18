@@ -8,7 +8,7 @@ export const geminiTask = task({
   machine: { preset: "micro" },
   run: async (payload: { prompt: string; images?: string[]; model?: string }) => {
     
-    // 1. Setup
+
     const actualPrompt = payload.prompt || (payload as any).payload?.prompt;
     const actualImages = payload.images || (payload as any).payload?.images || [];
     const modelName = "gemini-2.5-flash"; // Keep using the one that works for you
@@ -18,21 +18,21 @@ export const geminiTask = task({
     const model = genAI.getGenerativeModel({ model: modelName });
     const parts: any[] = [];
     
-    // 2. Handle Text
+    
     if (actualPrompt) {
       parts.push(actualPrompt);
     } else {
-      parts.push("What do you see in this image?"); // Fallback prompt for vision
+      parts.push("What do you see in this image?"); 
     }
 
-    // 3. Handle Images (The Fix!)
+    
     if (actualImages.length > 0) {
       for (const imgData of actualImages) {
         try {
-          // Check if it is Base64 (starts with "data:image...")
+         
           if (imgData.startsWith("data:")) {
              console.log("🔹 Processing Base64 Image...");
-             // Extract the actual base64 string (remove "data:image/png;base64,")
+           
              const base64Content = imgData.split(",")[1];
              const mimeType = imgData.substring(imgData.indexOf(":") + 1, imgData.indexOf(";"));
              
@@ -43,7 +43,7 @@ export const geminiTask = task({
                },
              });
           } 
-          // Otherwise, treat it as a URL (Old way)
+       
           else {
              console.log("🔹 Fetching Image URL...");
              const response = await fetch(imgData);
@@ -61,7 +61,6 @@ export const geminiTask = task({
       }
     }
 
-    // 4. Generate
     console.log(`🚀 Sending to ${modelName}...`);
     try {
         const result = await model.generateContent(parts);

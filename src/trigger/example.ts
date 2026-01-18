@@ -1,7 +1,7 @@
 import { task } from "@trigger.dev/sdk/v3";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Initialize Gemini
+
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 
 export const geminiTask = task({
@@ -16,11 +16,11 @@ export const geminiTask = task({
       model: payload.model || "gemini-1.5-pro" 
     });
 
-    // 2. Prepare Inputs
+
     const parts: any[] = [];
     if (payload.prompt) parts.push(payload.prompt);
 
-    // Add Images (if any)
+ 
     if (payload.images && payload.images.length > 0) {
       for (const imageUrl of payload.images) {
         const response = await fetch(imageUrl);

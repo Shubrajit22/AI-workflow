@@ -3,7 +3,6 @@ import { dark } from "@clerk/themes";
 
 export default function Page() {
   return (
-    // This centers the login box on a dark background
     <div className="flex items-center justify-center h-screen w-screen bg-[#111111]">
       <SignIn 
         appearance={{

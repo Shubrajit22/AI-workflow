@@ -3,7 +3,7 @@ export async function uploadToTransloadit(
   templateId: string
 ): Promise<{ url: string }> {
 
-  // 1. Ask server to sign params INCLUDING templateId
+
   const authRes = await fetch("/api/transloadit/auth", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
