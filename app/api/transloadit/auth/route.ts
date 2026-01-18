@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       key: process.env.NEXT_PUBLIC_TRANSLOADIT_KEY!,
       expires: expires.toISOString(),
     },
-    template_id: templateId, // 🔥 INCLUDED BEFORE SIGNING
+    template_id: templateId, 
   };
 
   const paramsString = JSON.stringify(params);
